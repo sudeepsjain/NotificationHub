@@ -281,9 +281,9 @@ class SettingsFragment : Fragment() {
 
     private fun showAboutDialog() {
         AlertDialog.Builder(requireContext())
-            .setTitle("About SmartNotify")
+            .setTitle("About NotificationHub")
             .setMessage("""
-                SmartNotify v1.0
+                NotificationHub v1.0
                 Smart notification manager with re-alerting and prioritization.
                 
                 Features:

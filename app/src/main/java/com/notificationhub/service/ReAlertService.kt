@@ -47,7 +47,7 @@ class ReAlertService : Service() {
 
     private fun createServiceNotification(): Notification {
         return NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("SmartNotify Active")
+            .setContentTitle("NotificationHub Active")
             .setContentText("Monitoring important notifications")
             .setSmallIcon(R.drawable.ic_notification)
             .setOngoing(true)

@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "SmartNotify"
+rootProject.name = "NotificationHub"
 include(":app")
