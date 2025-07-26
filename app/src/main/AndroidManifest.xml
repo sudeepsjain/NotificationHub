@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Core permissions -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Service permissions -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Battery optimization -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- Alarm permissions -->
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <!-- Boot receiver for service restart -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Internet for potential future features (optional) -->
+    <uses-permission android:name="android.permission.INTERNET"
+        android:required="false" />
+
+    <application
+        android:name=".SmartNotifyApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.NotificationHub"
+        android:requestLegacyExternalStorage="false"
+        tools:targetApi="34">
+
+        <!-- Welcome Activity -->
+        <activity
+            android:name=".WelcomeActivity"
+            android:exported="true"
+            android:theme="@style/Theme.NotificationHub"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.NotificationHub"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+
+            <!-- Handle notification taps -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Privacy Policy Activity -->
+        <activity
+            android:name=".PrivacyPolicyActivity"
+            android:exported="false"
+            android:theme="@style/Theme.NotificationHub"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Notification Listener Service -->
+        <service
+            android:name=".service.SmartNotificationListenerService"
+            android:exported="true"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+
+            <!-- Service metadata for better system integration -->
+            <meta-data
+                android:name="android.service.notification.default_filter_types"
+                android:value="1|2|4|8|16|32|64|128" />
+        </service>
+
+        <!-- Re-Alert Service -->
+        <service
+            android:name=".service.ReAlertService"
+            android:exported="false"
+            android:enabled="true"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="notification_reminder" />
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE_EXPLANATION"
+                android:resource="@string/foreground_service_explanation" />
+        </service>
+
+        <!-- Re-Alert Receiver -->
+        <receiver
+            android:name=".receiver.ReAlertReceiver"
+            android:exported="false"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.smartnotify.REALERT" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Boot Receiver for service restart -->
+        <receiver
+            android:name=".receiver.BootReceiver"
+            android:exported="true"
+            android:enabled="true">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+    <!-- Queries for package visibility (Android 11+) -->
+    <queries>
+        <!-- Query for all apps to show in management -->
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+
+        <!-- Common messaging apps -->
+        <package android:name="com.whatsapp" />
+        <package android:name="com.facebook.orca" />
+        <package android:name="com.google.android.apps.messaging" />
+        <package android:name="com.android.mms" />
+
+        <!-- Email apps -->
+        <package android:name="com.google.android.gm" />
+        <package android:name="com.microsoft.office.outlook" />
+
+        <!-- Social media -->
+        <package android:name="com.instagram.android" />
+        <package android:name="com.twitter.android" />
+        <package android:name="com.facebook.katana" />
+
+        <!-- Work apps -->
+        <package android:name="com.slack" />
+        <package android:name="com.microsoft.teams" />
+        <package android:name="us.zoom.videomeetings" />
+    </queries>
+
+</manifest>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NotificationHub</string>
+
+    <!-- Navigation -->
+    <string name="home">Home</string>
+    <string name="log">Log</string>
+    <string name="apps">Apps</string>
+    <string name="settings">Settings</string>
+
+    <!-- Home Screen -->
+    <string name="permission_required">Permission Required</string>
+    <string name="notification_access_description">NotificationHub needs notification access to manage your notifications intelligently.</string>
+    <string name="grant_permission">Grant Permission</string>
+    <string name="unread_notifications">Unread Important Notifications</string>
+    <string name="no_unread_notifications">No unread important notifications</string>
+    <string name="unread_count">You have %d unread important notifications</string>
+    <string name="mark_all_read">Mark All as Read</string>
+    <string name="mark_all_read_short">Mark All</string>
+    <string name="mark_all_read_compact">Mark ✓</string>
+    <string name="recent_notifications">Recent Important Notifications</string>
+    <string name="no_recent_notifications">No recent notifications</string>
+
+    <!-- Notification Log -->
+    <string name="tab_all">All</string>
+    <string name="tab_important">Important</string>
+    <string name="tab_other">Other</string>
+    <string name="search">Search</string>
+    <string name="no_notifications_found">No notifications found</string>
+    <string name="mark_read">Mark Read</string>
+    <string name="app_icon">App Icon</string>
+
+    <!-- App Category -->
+    <string name="important">Important</string>
+
+    <!-- Settings -->
+    <string name="retention_settings">Data Retention</string>
+    <string name="retention_days">Keep notifications for %d days</string>
+    <string name="realert_settings">Re-Alert Settings</string>
+    <string name="realert_interval">Re-alert every %d minutes</string>
+    <string name="silent_notifications">Silent Notifications</string>
+    <string name="silent_notifications_description">Show notifications without sound</string>
+    <string name="dnd_settings">Do Not Disturb</string>
+    <string name="allow_during_dnd">Allow alerts during DND</string>
+    <string name="actions">Actions</string>
+    <string name="notification_permissions">Notification Permissions</string>
+    <string name="battery_optimization">Battery Optimization</string>
+    <string name="about">About</string>
+    <string name="about_app">About NotificationHub</string>
+    
+    <!-- Notification Management -->
+    <string name="permission_management">Permission Management</string>
+    <string name="app_notifications">App Notifications</string>
+    <string name="manage_app_notifications">Manage App Notifications</string>
+    <string name="notifications_enabled">Notifications enabled</string>
+    <string name="notifications_disabled">Notifications disabled</string>
+    <string name="checking_status">Checking status...</string>
+
+    <!-- Summary Notification -->
+    <string name="summary_title">%d important notifications</string>
+    <string name="no_notifications">No notifications</string>
+
+    <!-- Service -->
+    <string name="service_running">NotificationHub is monitoring notifications</string>
+    <string name="service_stopped">NotificationHub monitoring stopped</string>
+
+    <string name="foreground_service_explanation">NotificationHub runs in the background to provide timely re-alerts for important notifications you might have missed.</string>
+
+    <!-- Welcome Screen -->
+    <string name="welcome_title">Welcome to NotificationHub</string>
+    <string name="welcome_subtitle">by TeckGrow Consultancy</string>
+    <string name="welcome_description">Smart notification management with intelligent filtering and re-alerts for important notifications you might miss.</string>
+    <string name="get_started">Get Started</string>
+    <string name="feature_smart_filtering">Smart notification filtering and categorization</string>
+    <string name="feature_realerts">Re-alerts for important notifications you might miss</string>
+    <string name="feature_customizable">Customizable app-specific importance settings</string>
+    <string name="feature_privacy">Local data storage with complete privacy protection</string>
+
+    <!-- Permission Guidance -->
+    <string name="enable_notification_access">Enable Notification Access</string>
+    <string name="permission_guidance_message">To enable NotificationHub, please follow these steps:\n\n1️⃣ In the next screen, look for \"NotificationHub\" in the list\n\n2️⃣ Tap on \"NotificationHub\" to select it\n\n3️⃣ Enable the toggle switch next to NotificationHub\n\n4️⃣ Confirm by tapping \"Allow\" when prompted\n\n5️⃣ Return to NotificationHub to complete setup\n\nThis allows NotificationHub to read your notifications and provide smart filtering.</string>
+    <string name="open_settings">Open Settings</string>
+</resources>

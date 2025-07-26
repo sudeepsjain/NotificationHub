@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FF1A1A2E">
+
+    <!-- Header with Search -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#FF2D2D44">
+
+        <!-- Search Bar -->
+        <EditText
+            android:id="@+id/search_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Search notifications..."
+            android:drawableStart="@android:drawable/ic_menu_search"
+            android:drawablePadding="12dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:background="@drawable/search_background"
+            android:textColor="#FFFFFFFF"
+            android:textColorHint="#FFAAAAAA"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Stats Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/notification_count_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Loading notifications..."
+                android:textSize="14sp"
+                android:textColor="#FFAAAAAA" />
+
+            <Button
+                android:id="@+id/mark_all_read_button"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Mark All Read"
+                android:textSize="12sp"
+                android:minWidth="0dp"
+                android:paddingHorizontal="16dp"
+                android:enabled="false"
+                style="@style/Widget.Material3.Button.TextButton" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Tab Layout -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#FF2D2D44"
+        app:tabTextColor="#FFAAAAAA"
+        app:tabSelectedTextColor="#FFFFFFFF"
+        app:tabIndicatorColor="#FF03DAC5"
+        app:tabMode="fixed" />
+
+    <!-- Content Area -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingHorizontal="8dp"
+            android:paddingBottom="80dp"
+            android:scrollbars="vertical" />
+
+        <!-- Loading State -->
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <!-- Empty State -->
+        <LinearLayout
+            android:id="@+id/empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="32dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:src="@drawable/ic_notification"
+                android:alpha="0.4"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No notifications found"
+                android:textSize="18sp"
+                android:textColor="#FFAAAAAA"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/empty_message_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notifications will appear here when received"
+                android:textSize="14sp"
+                android:textColor="#FF777777"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

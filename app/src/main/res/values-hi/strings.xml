@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">नोटिफिकेशनहब</string>
+    
+    <!-- Navigation -->
+    <string name="home">होम</string>
+    <string name="log">लॉग</string>
+    <string name="apps">ऐप्स</string>
+    <string name="settings">सेटिंग्स</string>
+    
+    <!-- Home Screen -->
+    <string name="permission_required">अनुमति आवश्यक</string>
+    <string name="notification_access_description">नोटिफिकेशनहब को आपकी सूचनाओं को बुद्धिमानी से प्रबंधित करने के लिए सूचना पहुंच की आवश्यकता है।</string>
+    <string name="grant_permission">अनुमति दें</string>
+    <string name="unread_notifications">अपठित महत्वपूर्ण सूचनाएं</string>
+    <string name="no_unread_notifications">कोई अपठित महत्वपूर्ण सूचनाएं नहीं</string>
+    <string name="unread_count">आपके पास %d अपठित महत्वपूर्ण सूचनाएं हैं</string>
+    <string name="mark_all_read">सभी को पढ़ा हुआ चिह्नित करें</string>
+    <string name="mark_all_read_short">सभी चिह्नित करें</string>
+    <string name="mark_all_read_compact">सभी ✓</string>
+    <string name="recent_notifications">हाल की महत्वपूर्ण सूचनाएं</string>
+    <string name="no_recent_notifications">कोई हाल की सूचनाएं नहीं</string>
+    
+    <!-- Notification Log -->
+    <string name="tab_all">सभी</string>
+    <string name="tab_important">महत्वपूर्ण</string>
+    <string name="tab_other">अन्य</string>
+    <string name="search">खोजें</string>
+    <string name="no_notifications_found">कोई सूचनाएं नहीं मिलीं</string>
+    <string name="mark_read">पढ़ा हुआ चिह्नित करें</string>
+    <string name="app_icon">ऐप आइकन</string>
+    
+    <!-- App Category -->
+    <string name="important">महत्वपूर्ण</string>
+    
+    <!-- Settings -->
+    <string name="retention_settings">डेटा संरक्षण</string>
+    <string name="retention_days">सूचनाओं को %d दिनों तक रखें</string>
+    <string name="realert_settings">पुन: अलर्ट सेटिंग्स</string>
+    <string name="realert_interval">हर %d मिनट में पुन: अलर्ट करें</string>
+    <string name="dnd_settings">परेशान न करें</string>
+    <string name="allow_during_dnd">DND के दौरान अलर्ट की अनुमति दें</string>
+    <string name="actions">क्रियाएं</string>
+    <string name="test_notification">परीक्षण सूचना</string>
+    <string name="notification_permissions">सूचना अनुमतियां</string>
+    <string name="battery_optimization">बैटरी अनुकूलन</string>
+    <string name="about">के बारे में</string>
+    <string name="about_app">नोटिफिकेशनहब के बारे में</string>
+    
+    <!-- Summary Notification -->
+    <string name="summary_title">%d महत्वपूर्ण सूचनाएं</string>
+    <string name="no_notifications">कोई सूचनाएं नहीं</string>
+
+    <!-- Service -->
+    <string name="service_running">नोटिफिकेशनहब सूचनाओं की निगरानी कर रहा है</string>
+    <string name="service_stopped">नोटिफिकेशनहब ने निगरानी बंद कर दी है</string>
+
+    <string name="foreground_service_explanation">नोटिफिकेशनहब पृष्ठभूमि में चलकर आपके छूटे हुए महत्वपूर्ण नोटिफिकेशनों के लिए समय पर पुनः-स्मरण भेजता है।</string>
+</resources>
