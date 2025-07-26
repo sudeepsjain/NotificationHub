@@ -43,6 +43,9 @@
     <color name="apps_color">#FFFF9800</color>
     <color name="data_color">#FFFF9800</color>
     <color name="about_color">#FF2196F3</color>
+    
+    <!-- App Icon Background -->
+    <color name="ic_launcher_background">#FFFFFFFF</color>
 
 
 </resources>

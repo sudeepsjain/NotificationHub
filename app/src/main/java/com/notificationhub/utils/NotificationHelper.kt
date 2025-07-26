@@ -64,9 +64,12 @@ object NotificationHelper {
                     try {
                         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
-                        val intent = Intent(context, MainActivity::class.java)
+                        val intent = Intent(context, MainActivity::class.java).apply {
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            action = "OPEN_APP_FROM_NOTIFICATION"
+                        }
                         val pendingIntent = PendingIntent.getActivity(
-                            context, 0, intent,
+                            context, SUMMARY_NOTIFICATION_ID, intent,
                             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
                         )
 
@@ -89,6 +92,8 @@ object NotificationHelper {
                             .setContentIntent(pendingIntent)
                             .setAutoCancel(false)
                             .setOngoing(true)
+                            .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
+                            .setNumber(notifications.size)
 
                         if (preferenceManager.silentNotifications) {
                             notificationBuilder.setPriority(NotificationCompat.PRIORITY_LOW)
@@ -114,6 +119,19 @@ object NotificationHelper {
     private fun cancelSummaryNotification(context: Context) {
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.cancel(SUMMARY_NOTIFICATION_ID)
-        Log.d(TAG, "Summary notification cancelled")
+        
+        // Clear app badge by posting a notification with number 0 then immediately canceling it
+        try {
+            val clearBadgeNotification = NotificationCompat.Builder(context, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_notification)
+                .setNumber(0)
+                .build()
+            notificationManager.notify(SUMMARY_NOTIFICATION_ID + 1, clearBadgeNotification)
+            notificationManager.cancel(SUMMARY_NOTIFICATION_ID + 1)
+        } catch (e: Exception) {
+            Log.w(TAG, "Could not clear badge", e)
+        }
+        
+        Log.d(TAG, "Summary notification cancelled and badge cleared")
     }
 }
