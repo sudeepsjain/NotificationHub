@@ -8,7 +8,7 @@ NotificationHub is an intelligent Android notification management app that helps
 
 | Home Screen | Notification Log | App Management | Settings |
 |-------------|------------------|----------------|----------|
-| ![Home](screenshots/home.png) | ![Log](screenshots/log.png) | ![Apps](screenshots/apps.png) | ![Settings](screenshots/settings.png) |
+| ![Home](blob/main/Home.jpg) | ![Log](blob/main/NotificationLog.jpg) | ![Apps](blob/main/AppManagement.jpg) | ![Settings](blob/main/Settings.jpg) |
 
 ## ✨ Features
 
