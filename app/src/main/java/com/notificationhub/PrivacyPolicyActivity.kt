@@ -3,7 +3,9 @@ package com.notificationhub
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.webkit.WebResourceRequest
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 
 class PrivacyPolicyActivity : AppCompatActivity() {
@@ -19,17 +21,38 @@ class PrivacyPolicyActivity : AppCompatActivity() {
         webView.settings.setSupportMultipleWindows(true)
         
         // Set WebViewClient to handle link clicks
-        webView.webViewClient = object : android.webkit.WebViewClient() {
-            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                url?.let {
-                    if (it.startsWith("https://teckgrow.com")) {
-                        // Open external links in browser
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(it))
+        webView.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
+                val url = request?.url?.toString()
+                return if (url != null && (url.startsWith("https://") || url.startsWith("http://"))) {
+                    // Open external links in browser
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    try {
                         startActivity(intent)
-                        return true
+                    } catch (e: Exception) {
+                        // Handle case where no browser is available
+                        e.printStackTrace()
                     }
+                    true
+                } else {
+                    super.shouldOverrideUrlLoading(view, request)
                 }
-                return false
+            }
+            
+            // Fallback for older Android versions
+            @Suppress("DEPRECATION")
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                return if (url != null && (url.startsWith("https://") || url.startsWith("http://"))) {
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                    try {
+                        startActivity(intent)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                    true
+                } else {
+                    false
+                }
             }
         }
         
